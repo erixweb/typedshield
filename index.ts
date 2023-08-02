@@ -2,6 +2,7 @@ export const t$ = {
 	__value: "",
     __typoeof: "any",
     __maxlen: Infinity,
+    __minlen: -Infinity,
 
 	get value() {
 		return this.__value
@@ -13,6 +14,10 @@ export const t$ = {
             return
         } else if (state.length > this.__maxlen) {
             console.error(`State has a maximum length of ${this.__maxlen} but you're assigning it a value of length ${state.length}`) 
+
+            return
+        } else if (state.length < this.__minlen) {
+            console.error(`State has a minimum length of ${this.__minlen} but you're assigning it a value of length ${state.length}`) 
 
             return
         }
@@ -45,6 +50,11 @@ export const t$ = {
 	},
     max(maximum: number) {
         this.__maxlen = maximum
+
+		return this
+    },
+    min(minimum: number) {
+        this.__minlen = minimum
 
 		return this
     }

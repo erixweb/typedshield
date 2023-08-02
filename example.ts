@@ -1,7 +1,7 @@
 import { t$ } from "./index.ts";
 
-const user = t$.string().max(5)
+const user = t$.string().min(1).max(5)
 
-user.value = 'hello'
+user.value = 'Hellos'
 
 console.log(user.value)
